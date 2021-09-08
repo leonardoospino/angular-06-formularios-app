@@ -20,6 +20,7 @@
           />
           <span
             class="form-text text-danger"
+            *ngIf="campoInvalido('nombre')"
           >
             Debe de ser de 3 letras
           </span>
@@ -41,6 +42,7 @@
 
           <span
             class="form-text text-danger"
+            *ngIf="campoInvalido('precio')"
           >
             Precio debe mayor o igual a 0
           </span>
@@ -59,6 +61,12 @@
             placeholder="Existencias del producto"
             formControlName="existencias"
           />
+          <span
+            class="form-text text-danger"
+            *ngIf="campoInvalido('precio')"
+          >
+            Las existencias deben de ser mayor o igual a 0
+          </span>
         </div>
       </div>
 
@@ -89,5 +97,9 @@
 
     <span>Value</span>
     <pre>{{ miFormulario.value | json }}</pre>
+
+
+    <span>Precio</span>
+    <pre>{{ miFormulario.controls.precio.errors | json }}</pre>
   </div>
 </div>

@@ -15,7 +15,7 @@ export class BasicosComponent {
   // });
   miFormulario: FormGroup = this.formBuilder.group({
     nombre: [
-      'RTX 4080ti',
+      '',
       // Validadores Síncronos
       [Validators.required, Validators.minLength(3)]
       // Validadores Asíncronos
@@ -25,5 +25,12 @@ export class BasicosComponent {
   });
 
   constructor(private formBuilder: FormBuilder) { }
+
+  campoInvalido(campo: string) {
+    return (
+      this.miFormulario.controls[campo].errors &&
+      this.miFormulario.controls[campo].touched
+    );
+  }
 
 }
