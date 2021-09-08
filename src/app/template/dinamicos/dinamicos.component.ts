@@ -24,6 +24,18 @@ export class DinamicosComponent {
       { id: 2, nombre: 'Assassin\'s Creed Revelations' },
       { id: 3, nombre: 'Fallout' }
     ]
+  };
+
+  nuevoJuego: string = '';
+
+  agregarJuego(): void {
+    const nuevoFavorito: Favorito = {
+      id: (this.persona.favoritos[this.persona.favoritos.length - 1].id + 1),
+      nombre: this.nuevoJuego
+    };
+
+    this.nuevoJuego = '';
+    this.persona.favoritos.push({...nuevoFavorito});
   }
 
   eliminar(indice: number): void {

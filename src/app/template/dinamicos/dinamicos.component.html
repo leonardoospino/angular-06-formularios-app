@@ -42,10 +42,13 @@
           type="text"
           class="form-control"
           placeholder="Agregar favorito"
+          [(ngModel)]="nuevoJuego"
+          name="nuevoJuego"
         />
         <button
           class="btn btn-outline-primary"
           type="button"
+          (click)="agregarJuego()"
         >
           Agregar
         </button>
@@ -98,3 +101,6 @@
 
 <span>Persona</span>
 <pre>{{ persona | json }}</pre>
+
+<span>Nuevo juego</span>
+<pre>{{ nuevoJuego | json }}</pre>
