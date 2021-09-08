@@ -16,7 +16,7 @@
         type="text"
         class="form-control"
         placeholder="Nombre de la persona"
-        ngModel
+        [ngModel]="persona.nombre"
         name="nombre"
         required
       />
@@ -59,10 +59,26 @@
       Favoritos
     </label>
     <div class="col-sm-9">
-      <input type="text" class="form-control mb-1">
-      <input type="text" class="form-control mb-1">
-      <input type="text" class="form-control mb-1">
-      <input type="text" class="form-control mb-1">
+
+      <div
+        class="input-group mb-1"
+        *ngFor="let juego of persona.favoritos; let i = index"
+      >
+        <input
+          [(ngModel)]="juego.nombre"
+          name="favorito_{{ i }}"
+          class="form-control"
+          required
+        />
+
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          (click)="eliminar(i)"
+        >
+          Eliminar
+        </button>
+      </div>
     </div>
   </div>
 
@@ -79,3 +95,6 @@
     </div>
   </div>
 </form>
+
+<span>Persona</span>
+<pre>{{ persona | json }}</pre>
