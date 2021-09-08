@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-basicos',
@@ -14,9 +14,14 @@ export class BasicosComponent {
   //   'existencias': new FormControl(5)
   // });
   miFormulario: FormGroup = this.formBuilder.group({
-    nombre: ['RTX 4080ti'],
-    precio: [0],
-    existencias: [0]
+    nombre: [
+      'RTX 4080ti',
+      // Validadores Síncronos
+      [Validators.required, Validators.minLength(3)]
+      // Validadores Asíncronos
+    ],
+    precio: [0, [Validators.required, Validators.min(0)]],
+    existencias: [0, [Validators.required, Validators.min(0)]]
   });
 
   constructor(private formBuilder: FormBuilder) { }
