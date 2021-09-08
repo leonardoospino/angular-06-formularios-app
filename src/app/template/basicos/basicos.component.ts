@@ -23,7 +23,6 @@ export class BasicosComponent implements OnInit {
   }
 
   precioValido(): boolean {
-    console.log('asdasd');
     return (
       this.miFormulario?.controls.precio?.invalid &&
       this.miFormulario?.controls.precio?.touched
