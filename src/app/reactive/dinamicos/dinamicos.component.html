@@ -42,10 +42,12 @@
           class="form-control"
           placeholder="Agregar favorito"
           name="nuevoJuego"
+          [formControl]="nuevoFavorito"
         />
         <button
           class="btn btn-outline-primary"
           type="button"
+          (click)="agregarJuego()"
         >
           Agregar
         </button>
@@ -95,3 +97,9 @@
 
 <span>Value</span>
 <pre>{{ miFormulario.value | json }}</pre>
+
+<span>Agregar Juego: Valid</span>
+<pre>{{ nuevoFavorito.valid }}</pre>
+
+<span>Agregar Juego: Valor</span>
+<pre>{{ nuevoFavorito.value | json }}</pre>

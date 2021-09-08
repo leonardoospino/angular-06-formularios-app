@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface Persona {
   nombre:    String;
@@ -28,6 +28,8 @@ export class DinamicosComponent {
     ], Validators.required)
   });
 
+  nuevoFavorito: FormControl = this.fb.control('', Validators.required);
+
   get favoritosArreglo(): FormArray {
     return this.miFormulario.get('favoritos') as FormArray;
   }
@@ -48,6 +50,17 @@ export class DinamicosComponent {
     }
 
     console.log(this.miFormulario.value);
+  }
+
+  agregarJuego(): void {
+    if (this.nuevoFavorito.invalid) {
+      return;
+    }
+
+    this.favoritosArreglo.push(
+      this.fb.control(this.nuevoFavorito.value, Validators.required)
+    );
+    this.nuevoFavorito.reset();
   }
 
 }
