@@ -21,7 +21,7 @@ interface Favorito {
 export class DinamicosComponent {
 
   miFormulario: FormGroup = this.fb.group({
-    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    nombre: ['Adriana', [Validators.required, Validators.minLength(3)]],
     favoritos: this.fb.array([
       ['COD MW3', Validators.required],
       ['God Of War Ragnarok'],
