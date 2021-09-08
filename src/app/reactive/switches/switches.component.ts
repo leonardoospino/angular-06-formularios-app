@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -26,5 +27,23 @@ export class SwitchesComponent implements OnInit {
       ...this.persona,
       terminos: false
     });
+
+    // Suscribirse a un campo
+    // this.miFormulario.get('genero')?.valueChanges.subscribe(
+    //   genero => console.log(genero)
+    // );
+
+    this.miFormulario.valueChanges.subscribe(
+      ({terminos, ...rest}) => {
+        this.persona = rest;
+      }
+    );
+  }
+
+  guardar(): void {
+    const formValue = { ...this.miFormulario.value };
+    delete formValue.terminos;
+
+    this.persona = formValue;
   }
 }
