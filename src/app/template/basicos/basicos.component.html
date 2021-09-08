@@ -16,7 +16,7 @@
           <input
             type="text"
             class="form-control"
-            ngModel
+            [ngModel]="initForm.producto"
             name="producto"
             placeholder="Nombre del producto"
             required
@@ -40,7 +40,7 @@
           <input
             type="number"
             class="form-control"
-            ngModel
+            [ngModel]="initForm.precio"
             name="precio"
             placeholder="Precio del producto"
             required
@@ -65,7 +65,7 @@
           <input
             type="number"
             class="form-control"
-            ngModel
+            [ngModel]="initForm.existencias"
             name="existencias"
             customMin
             [minimo]="0"
