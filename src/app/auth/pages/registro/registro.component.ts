@@ -66,6 +66,27 @@ export class RegistroComponent implements OnInit {
     );
   }
 
+  emailRequired() {
+    return (
+      this.miFormulario.get('email')?.errors?.required &&
+      this.miFormulario.get('email')?.touched
+    );
+  }
+
+  emailFormato() {
+    return (
+      this.miFormulario.get('email')?.errors?.pattern &&
+      this.miFormulario.get('email')?.touched
+    );
+  }
+
+  emailEnUso() {
+    return (
+      this.miFormulario.get('email')?.errors?.emailEnUso &&
+      this.miFormulario.get('email')?.touched
+    );
+  }
+
   submitFormulario(): void {
     console.log(this.miFormulario.value);
 

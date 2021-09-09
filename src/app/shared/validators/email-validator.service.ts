@@ -17,7 +17,7 @@ export class EmailValidatorService implements AsyncValidator {
       `http://localhost:3000/usuarios?q=${ email }`
     )
     .pipe(
-      delay(3000),
+      // delay(3000),
       map((res) => {
         return (res.length === 0 ?  null : { emailEnUso: true });
       })
