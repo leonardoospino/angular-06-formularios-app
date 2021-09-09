@@ -32,7 +32,7 @@ export class RegistroComponent implements OnInit {
     this.miFormulario.reset({
       nombre: 'Adriana Contreras',
       email: 'adrianaccfontalvo@gmail.com',
-      username: ''
+      username: 'adri77'
     });
   }
 
