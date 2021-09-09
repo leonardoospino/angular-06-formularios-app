@@ -47,25 +47,9 @@
 
           <span
             class="form-text text-danger"
-            *ngIf="emailRequired()"
+            *ngIf="campoInvalido('email')"
           >
-            El correo es obligatorio
-          </span>
-
-
-          <span
-            class="form-text text-danger"
-            *ngIf="emailFormato()"
-          >
-            El formato del correo es invalido
-          </span>
-
-
-          <span
-            class="form-text text-danger"
-            *ngIf="emailEnUso()"
-          >
-            El correo ya está en uso
+            {{ emailErrorMsg }}
           </span>
         </div>
       </div>

@@ -43,6 +43,19 @@ export class RegistroComponent implements OnInit {
     ]
   });
 
+  get emailErrorMsg(): string  {
+    const errors = this.miFormulario.get('email')?.errors;
+
+    if (errors?.required) {
+      return 'El correo es obligatorio';
+    } else if (errors?.pattern){
+      return 'El formato del correo es invalido!';
+    } else if (errors?.emailEnUso) {
+      return 'El correo ya está en uso';
+    }
+    return '';
+  }
+
   constructor(
     private fb: FormBuilder,
     private validatorService: ValidatorService,
@@ -66,26 +79,6 @@ export class RegistroComponent implements OnInit {
     );
   }
 
-  emailRequired() {
-    return (
-      this.miFormulario.get('email')?.errors?.required &&
-      this.miFormulario.get('email')?.touched
-    );
-  }
-
-  emailFormato() {
-    return (
-      this.miFormulario.get('email')?.errors?.pattern &&
-      this.miFormulario.get('email')?.touched
-    );
-  }
-
-  emailEnUso() {
-    return (
-      this.miFormulario.get('email')?.errors?.emailEnUso &&
-      this.miFormulario.get('email')?.touched
-    );
-  }
 
   submitFormulario(): void {
     console.log(this.miFormulario.value);
