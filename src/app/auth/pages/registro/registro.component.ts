@@ -30,7 +30,15 @@ export class RegistroComponent implements OnInit {
         Validators.pattern(this.validatorService.emailPattern)
       ]
     ],
-    username: ['', [Validators.required, noPuedeSerStrider]]
+    username: ['', [Validators.required, noPuedeSerStrider]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    password2: ['', Validators.required]
+  },
+  // Opciones para el formulario (async & sync validator)
+  {
+    validators: [
+      this.validatorService.camposIguales('password', 'password2')
+    ]
   });
 
   constructor(
