@@ -5,6 +5,7 @@ import {
   nombreApellidoPattern,
   noPuedeSerStrider
 } from 'src/app/shared/validators/validaciones';
+import { EmailValidatorService } from 'src/app/shared/validators/email-validator.service';
 
 @Component({
   selector: 'app-registro',
@@ -28,7 +29,8 @@ export class RegistroComponent implements OnInit {
         Validators.required,
         // Utilizando servicio de validaciones
         Validators.pattern(this.validatorService.emailPattern)
-      ]
+      ],
+      [ this.emailValidator ]
     ],
     username: ['', [Validators.required, noPuedeSerStrider]],
     password: ['', [Validators.required, Validators.minLength(6)]],
@@ -43,7 +45,8 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private validatorService: ValidatorService
+    private validatorService: ValidatorService,
+    private emailValidator: EmailValidatorService
   ) { }
 
   ngOnInit(): void {
